@@ -13,8 +13,6 @@ public class WeatherForecastController : ControllerBase
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
     ];
 
-    private static readonly HttpClient HttpClient = new();
-
     [HttpGet]
     public IEnumerable<WeatherForecast> Get()
     {

@@ -26,12 +26,12 @@ const WeatherForecastList: React.FC = () => {
 
     return (
         <Card>
-            <Card.Header>Каталог товаров</Card.Header>
+            <Card.Header>Прогноз погоды</Card.Header>
             <Card.Body>
                 <ListGroup>
                     {weatherForecasts.map(weatherForecast => (
                         <ListGroup.Item>
-                            <h3>{weatherForecast.date}</h3>
+                            <h3>{new Date(weatherForecast.date).toDateString()}</h3>
                             <p>Температура: {weatherForecast.temperatureC} градусов</p>
                             <p>{weatherForecast.summary}</p>
                         </ListGroup.Item>
