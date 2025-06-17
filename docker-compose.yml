@@ -1,0 +1,19 @@
+﻿services:
+  webapiwithreact-backend:
+    image: webapiwithreact-backend 
+    build:
+      context: .
+      dockerfile: WebApiWithReact.Backend/Dockerfile
+    ports:
+      - "5211:5211" 
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+    volumes:
+      - .:/src
+  webapiwithreact-frontend:
+    image: webapiwithreact-frontend
+    build:
+      context: .
+      dockerfile: WebApiWithReact.Frontend/Dockerfile
+    ports:
+      - "5210:5210" 

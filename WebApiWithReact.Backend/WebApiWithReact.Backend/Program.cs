@@ -11,6 +11,13 @@ builder.Services.AddCors(options =>
             .AllowAnyHeader() // Разрешить любые заголовки
             .AllowCredentials(); // Разрешить использование credentials
     });
+
+    options.AddPolicy("AllowAllOrigins", policy =>
+    {
+        policy.AllowAnyOrigin() // Разрешить запросы с любого домена
+            .WithMethods("GET")// Разрешить любые HTTP-методы
+            .AllowAnyHeader(); // Разрешить любые заголовки
+    });
 });
 
 builder.Services.AddSpaStaticFiles(options => options.RootPath = "wwwroot");
@@ -20,7 +27,7 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-app.UseCors("AllowSpecificRoute");
+app.UseCors("AllowAllOrigins");
 
 app.UseRouting();
 app.UseAuthorization();
@@ -30,9 +37,6 @@ app.UseSwagger();
 app.UseSwaggerUI();
 
 app.UseSpaStaticFiles();
-app.UseSpa(spaBuilder =>
-{
-    spaBuilder.Options.SourcePath = "wwwroot";
-});
+app.UseSpa(spaBuilder => { spaBuilder.Options.SourcePath = "wwwroot"; });
 
 app.Run();
