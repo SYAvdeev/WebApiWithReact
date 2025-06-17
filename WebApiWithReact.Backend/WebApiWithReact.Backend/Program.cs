@@ -3,14 +3,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddCors(options =>
 {
-    // Настройка политики CORS для конкретного маршрута
-    options.AddPolicy("AllowSpecificRoute", policy =>
+    /*options.AddPolicy("AllowSpecificRoute", policy =>
     {
         policy.WithOrigins("http://localhost:5210") // Разрешить запросы с указанного домена
             .AllowAnyMethod() // Разрешить любые HTTP-методы
             .AllowAnyHeader() // Разрешить любые заголовки
             .AllowCredentials(); // Разрешить использование credentials
-    });
+    });*/
 
     options.AddPolicy("AllowAllOrigins", policy =>
     {
